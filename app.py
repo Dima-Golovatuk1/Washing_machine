@@ -1,11 +1,27 @@
-from flask import Flask, render_template
+import pygame
 
+pygame.init()
+screen = pygame.display.set_mode((600, 300))
+pygame.display.set_caption("washing machine")
+icon = pygame.image.load('img/washing-machine.jpg')
+pygame.display.set_icon(icon)
 
-app = Flask(__name__)
+square = pygame.Surface((50, 170))
+square.fill("Blue")
 
-def index():
-    return render_template()
+washing_machine = pygame.image.load('img/washing-machine.jpg')
 
+running = True
+while running:
+    screen.fill((255, 255, 255))
+    pygame.draw.circle(screen, "Red", (50, 50), 30)
+    screen.blit(square, (275, 65))
+    screen.blit(washing_machine, (0, 0))
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    pygame.display.update()
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+            pygame.quit()
+
