@@ -1,24 +1,43 @@
 import pygame
+import time
 
 pygame.init()
-screen = pygame.display.set_mode((600, 300))
+clock = pygame.time.Clock()
+
+font = pygame.font.Font("fonts/Roboto-Regular.ttf", 24)
+text = font.render('123456789', False, 'White')
+button = pygame.Surface((150, 50))
+text.get_rect(center=(button.get_width() /2,
+            button.get_height()/2))
+
+pygame.init()
+screen = pygame.display.set_mode((640, 360))
 pygame.display.set_caption("washing machine")
 icon = pygame.image.load('img/washing-machine.jpg')
 pygame.display.set_icon(icon)
 
-square = pygame.Surface((50, 170))
-square.fill("Blue")
-
+bg = pygame.image.load('img/background.jpg')
 washing_machine = pygame.image.load('img/washing-machine.jpg')
+washing_machine.set_alpha()
+clothing = pygame.image.load('img/clothing.png')
+
+
 
 running = True
 while running:
-    screen.fill((255, 255, 255))
-    pygame.draw.circle(screen, "Red", (50, 50), 30)
-    screen.blit(square, (275, 65))
-    screen.blit(washing_machine, (0, 0))
+    screen.blit(bg, (0, 0))
+    screen.blit(washing_machine, (192, 29))
+
+    clothing = pygame.transform.rotate(clothing, -90)
+    washing_machine.blit(clothing, (77, 100))
+    screen.blit(button, (0, 0))
+
 
     pygame.display.update()
+    clock.tick(10)
+
+
+
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
