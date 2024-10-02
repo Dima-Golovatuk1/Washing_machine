@@ -6,8 +6,8 @@ clock = pygame.time.Clock()
 
 font = pygame.font.Font("fonts/Roboto-Regular.ttf", 24)
 text = font.render('123456789', False, 'White')
-button = pygame.Surface((150, 50))
-text.get_rect(center=(button.get_width() /2,
+button = pygame.Surface((50, 20))
+text_rect = text.get_rect(center=(button.get_width() /2,
             button.get_height()/2))
 
 pygame.init()
@@ -18,7 +18,6 @@ pygame.display.set_icon(icon)
 
 bg = pygame.image.load('img/background.jpg')
 washing_machine = pygame.image.load('img/washing-machine.jpg')
-washing_machine.set_alpha()
 clothing = pygame.image.load('img/clothing.png')
 
 
@@ -30,8 +29,8 @@ while running:
 
     clothing = pygame.transform.rotate(clothing, -90)
     washing_machine.blit(clothing, (77, 100))
-    screen.blit(button, (0, 0))
-
+    washing_machine.blit(button, (0, 0))
+    button.blit(text, text_rect)
 
     pygame.display.update()
     clock.tick(10)
