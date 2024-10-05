@@ -57,6 +57,7 @@ clock.tick(60)
 running = True
 water_level = False
 sound_finish_work = False
+sound_water_work = False
 num_rotate = 0
 while running:
 
@@ -99,7 +100,7 @@ while running:
                 clock.tick(20)
                 time = int(num_rotate / 20)
                 text_time = font.render(f'{time}', False, 'White')
-                print(num_rotate)
+                sound_water_work = True
                 if sound_very_fast_work == True:
                     sound_very_fast.play()
                     sound_very_fast_work = False
@@ -123,6 +124,9 @@ while running:
         water_height -= 1
         water = pygame.transform.scale(water, (100, water_height))
         clock.tick(20)
+        if sound_water_work:
+            sound_water.play()
+            sound_water_work = False
     else:
         if sound_finish_work:
             sound_finish.play()
