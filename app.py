@@ -157,6 +157,7 @@ while running:
                 sound_fast.stop()
                 sound_intensely.stop()
                 sound_very_fast.stop()
+                sound_finish_work = False
                 working = False
             elif button_intensely_rect.collidepoint(pygame.mouse.get_pos()):
                 num_rotate = 400
@@ -167,6 +168,7 @@ while running:
                 sound_fast.stop()
                 sound_intensely.stop()
                 sound_very_fast.stop()
+                sound_finish_work = False
                 time = int(((num_rotate - 120) / 5) + (120 / 20))
                 text_time = font.render(f'{time}', False, 'White')
             elif button_fast_rect.collidepoint(pygame.mouse.get_pos()):
@@ -178,6 +180,7 @@ while running:
                 sound_fast.stop()
                 sound_intensely.stop()
                 sound_very_fast.stop()
+                sound_finish_work = False
                 time = int(((num_rotate - 120) / 5) + (120 / 20))
                 text_time = font.render(f'{time}', False, 'White')
 
