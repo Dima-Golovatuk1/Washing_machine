@@ -36,6 +36,7 @@ sound_very_fast = pygame.mixer.Sound('sounds/sound_very_fast.mp3')
 sound_intensely = pygame.mixer.Sound('sounds/sound_intensely.mp3')
 sound_fast = pygame.mixer.Sound('sounds/sound_fast.mp3')
 sound_water = pygame.mixer.Sound('sounds/sound_water.mp3')
+sound_finish = pygame.mixer.Sound('sounds/finish.mp3')
 
 screen = pygame.display.set_mode((640, 360))
 pygame.display.set_caption("washing machine")
@@ -55,6 +56,7 @@ water_y = 202
 clock.tick(60)
 running = True
 water_level = False
+sound_finish_work = False
 num_rotate = 0
 while running:
 
@@ -121,6 +123,10 @@ while running:
         water_height -= 1
         water = pygame.transform.scale(water, (100, water_height))
         clock.tick(20)
+    else:
+        if sound_finish_work:
+            sound_finish.play()
+            sound_finish_work = False
 
 
     for event in pygame.event.get():
@@ -136,6 +142,7 @@ while running:
                 sound_very_fast_work = True
                 sound_water_work = True
                 sound = True
+                sound_finish_work = True
                 water_y = 202
                 water_height = 40
                 print(water_y)
